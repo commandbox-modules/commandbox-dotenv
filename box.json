@@ -1,87 +1,27 @@
 {
     "name":"CommandBox Dotenv",
     "version":"1.0.0",
-    "author":"",
-    "location":"",
-    "directory":"",
-    "createPackageDirectory":true,
-    "packageDirectory":"",
-    "homepage":"",
-    "documentation":"",
+    "author":"Eric Peterson",
+    "homepage":"https://github.com/elpete/commandbox-dotenv",
+    "documentation":"https://github.com/elpete/commandbox-dotenv",
     "repository":{
-        "type":"",
-        "URL":""
+        "type":"git",
+        "URL":"https://github.com/elpete/commandbox-dotenv"
     },
-    "bugs":"",
+    "bugs":"https://github.com/elpete/commandbox-dotenv/issues",
     "slug":"commandbox-dotenv",
-    "shortDescription":"A sweet package",
-    "description":"",
-    "instructions":"",
-    "changelog":"",
+    "shortDescription":"Convention approach to adding environment variables to JVM args for CommandBox.",
+    "instructions":"https://github.com/elpete/commandbox-dotenv",
     "type":"commandbox-modules",
     "keywords":[
-        
+        "server",
+        "env"
     ],
     "private":false,
-    "engines":[
-        {
-            "type":"",
-            "version":""
-        }
-    ],
-    "defaultEngine":"",
-    "defaultPort":0,
-    "projectURL":"",
     "license":[
         {
-            "type":"",
-            "URL":""
+            "type":"MIT",
+            "URL":"https://github.com/elpete/commandbox-dotenv/blob/master/LICENSE"
         }
-    ],
-    "contributors":[
-        
-    ],
-    "dependencies":{
-        
-    },
-    "devDependencies":{
-        
-    },
-    "installPaths":{
-        
-    },
-    "ignore":[
-        "**/.*",
-        "test",
-        "tests"
-    ],
-    "testbox":{
-        "runner":[
-            {
-                "default":""
-            }
-        ],
-        "labels":[
-            
-        ],
-        "reporter":"",
-        "reporterResults":"",
-        "bundles":[
-            ""
-        ],
-        "directory":{
-            "mapping":"",
-            "recurse":true
-        },
-        "watchers":[
-            
-        ],
-        "notify":{
-            "emails":[
-                
-            ],
-            "growl":"",
-            "URL":""
-        }
-    }
+    ]
 }
