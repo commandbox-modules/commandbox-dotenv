@@ -1,6 +1,6 @@
 {
     "name":"CommandBox dotenv",
-    "version":"1.1.1",
+    "version":"1.1.2",
     "author":"Eric Peterson",
     "homepage":"https://github.com/elpete/commandbox-dotenv",
     "documentation":"https://github.com/elpete/commandbox-dotenv",
@@ -21,7 +21,7 @@
         "postVersion":"package set location='elpete/commandbox-dotenv#v`package version`'",
         "onRelease":"publish",
         "postPublish":"!git push && !git push --tags"
-      },
+    },
     "private":false,
     "license":[
         {
@@ -34,5 +34,6 @@
     },
     "installPaths":{
         "propertyFile":"modules/propertyFile"
-    }
+    },
+    "location":"elpete/commandbox-dotenv#v1.1.2"
 }
