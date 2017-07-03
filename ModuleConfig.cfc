@@ -19,9 +19,9 @@ component {
 				envStruct = deserializeJSON(envFile);
 			}
 			else { // assume it is a .properties file
-				var properties = createObject('java', 'java.util.Properties').init();
-				properties.load(CreateObject('java', 'java.io.FileInputStream').init(envFilePath));
-				envStruct = properties;
+				envStruct = wirebox.getInstance( "propertyFile" )
+					.load( envFilePath )
+					.getAsStruct();
 			}
 
 			// Append to the JVM args

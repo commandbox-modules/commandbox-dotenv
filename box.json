@@ -23,5 +23,11 @@
             "type":"MIT",
             "URL":"https://github.com/elpete/commandbox-dotenv/blob/master/LICENSE"
         }
-    ]
+    ],
+    "dependencies":{
+        "propertyFile":"^1.1.0"
+    },
+    "installPaths":{
+        "propertyFile":"modules/propertyFile"
+    }
 }
