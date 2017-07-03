@@ -19,7 +19,7 @@ component {
 				envStruct = deserializeJSON(envFile);
 			}
 			else { // assume it is a .properties file
-				envStruct = wirebox.getInstance( "propertyFile" )
+				envStruct = wirebox.getInstance( "PropertyFile@propertyFile" )
 					.load( envFilePath )
 					.getAsStruct();
 			}
