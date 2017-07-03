@@ -17,6 +17,11 @@
         "server",
         "env"
     ],
+    "scripts":{
+        "postVersion":"package set location='elpete/commandbox-dotenv#v`package version`'",
+        "onRelease":"publish",
+        "postPublish":"!git push && !git push --tags"
+      },
     "private":false,
     "license":[
         {
