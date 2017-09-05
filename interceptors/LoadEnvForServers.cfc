@@ -6,7 +6,7 @@ component {
     function onServerStart(interceptData) {
         var webRoot = interceptData.serverInfo.webRoot;
 
-        var envStruct = getEnvStruct( "#webRoot#/#settings.fileName#" );
+        var envStruct = getEnvStruct( "#webRoot#/#envFileName#" );
 
         // Append to the JVM args
         for (var key in envStruct) {
