@@ -8,7 +8,7 @@
 
 ## Load a local file into Java Properties for CommandBox commands and servers
 
-Storing secrets in source-controlled files is a bad idea, but we still need some way to provide these sensitive credentials or configuration values to our projects.  This problem is exacerbated in development environments where we are running multiple servers at once.  This package let's
+Storing secrets in source-controlled files is a bad idea, but we still need some way to provide these sensitive credentials or configuration values to our projects.  This problem is exacerbated in development environments where we are running multiple servers at once.  This package let's us solve this problem for servers started with CommandBox.
 
 ### Usage
 
