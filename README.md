@@ -2,10 +2,6 @@
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/TQMfPZtDP7SHs7UgJVGg61uH/elpete/commandbox-dotenv'>
-  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/TQMfPZtDP7SHs7UgJVGg61uH/elpete/commandbox-dotenv.svg' />
-</a>
-
 ## Load a local file into Java Properties for CommandBox commands and servers
 
 Storing secrets in source-controlled files is a bad idea, but we still need some way to provide these sensitive credentials or configuration values to our projects.  This problem is exacerbated in development environments where we are running multiple servers at once.  This package let's us solve this problem for servers started with CommandBox.
