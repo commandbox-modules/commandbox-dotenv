@@ -10,7 +10,7 @@ component {
 
         // Append to the JVM args
         for (var key in envStruct) {
-            interceptData.serverInfo.jvmArgs &= ' -D#key#=#envStruct[key]#';
+            interceptData.serverInfo.jvmArgs &= ' "-D#key#=#envStruct[key]#"';
         }
     }
 
