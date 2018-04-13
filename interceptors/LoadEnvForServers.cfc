@@ -3,17 +3,16 @@ component {
     property name="envFileName" inject="commandbox:moduleSettings:commandbox-dotenv:fileName";
     property name="propertyFile" inject="provider:PropertyFile@propertyFile";
 
-    function onServerStart(interceptData) {
-        var webRoot = interceptData.serverInfo.webRoot;
-
+    function preServerStart(interceptData) {
+        var webRoot = interceptData.serverdetails.serverInfo.webRoot;
         var envStruct = getEnvStruct( "#webRoot#/#envFileName#" );
-
-        // Append to the JVM args
         for (var key in envStruct) {
+            javaSystem.setProperty( key, envStruct[ key ] );
+            // Append to the JVM args
             interceptData.serverInfo.jvmArgs &= ' "-D#key#=#envStruct[key]#"';
         }
     }
-
+    
     private function getEnvStruct( envFilePath ) {
         if ( ! fileExists( envFilePath ) ) {
             return {};
