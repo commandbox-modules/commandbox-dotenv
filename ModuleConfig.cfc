@@ -7,7 +7,8 @@ component {
 
 		interceptors = [
 			{ class = "#moduleMapping#.interceptors.LoadEnvForCommands" },
-			{ class = "#moduleMapping#.interceptors.LoadEnvForServers" }
+			{ class = "#moduleMapping#.interceptors.LoadEnvForServers" },
+			{ class = "#moduleMapping#.interceptors.LoadEnvPreServers" },
 		];
 	}
 
