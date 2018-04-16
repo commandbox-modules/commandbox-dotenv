@@ -5,12 +5,12 @@ component {
     property name="javaSystem" inject="java:java.lang.System";
 
     function preServerStart(interceptData) {
-        var webRoot = interceptData.serverdetails.serverInfo.webRoot;
+        var webRoot = interceptData.serverDetails.serverInfo.webRoot;
         var envStruct = getEnvStruct( "#webRoot#/#envFileName#" );
         for (var key in envStruct) {
             javaSystem.setProperty( key, envStruct[ key ] );
             // Append to the JVM args
-            interceptData.serverInfo.jvmArgs &= ' "-D#key#=#envStruct[key]#"';
+            interceptData.serverDetails.serverInfo.jvmArgs &= ' "-D#key#=#envStruct[key]#"';
         }
     }
 
