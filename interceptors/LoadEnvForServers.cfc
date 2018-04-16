@@ -8,7 +8,7 @@ component {
         var envStruct = getEnvStruct( "#webRoot#/#envFileName#" );
         for (var key in envStruct) {
             // Append to the JVM args
-            interceptData.serverDetails.serverInfo.jvmArgs &= ' "-D#key#=#envStruct[key]#"';
+            interceptData.serverInfo.jvmArgs &= ' "-D#key#=#envStruct[key]#"';
         }
     }
 
