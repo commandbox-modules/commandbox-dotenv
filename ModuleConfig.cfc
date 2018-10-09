@@ -2,7 +2,8 @@ component {
 
 	function configure() {
 		settings = {
-			fileName = '.env'
+			fileName = '.env',
+			printOnLoad = false
 		};
 
 		interceptors = [

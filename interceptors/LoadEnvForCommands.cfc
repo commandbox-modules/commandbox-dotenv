@@ -1,6 +1,7 @@
 component {
 
     property name="envFileName" inject="commandbox:moduleSettings:commandbox-dotenv:fileName";
+    property name="printOnLoad" inject="commandbox:moduleSettings:commandbox-dotenv:printOnLoad";
     property name="envFileService" inject="EnvironmentFileService@commandbox-dotenv";
     property name="javaSystem" inject="java:java.lang.System";
     property name="fileSystemUtil" inject="FileSystem";
@@ -9,11 +10,14 @@ component {
     function onCLIStart( interceptData ) {
         var directory = fileSystemUtil.resolvePath( "" );
         var envStruct = envFileService.getEnvStruct( "#directory#/#envFileName#" );
+        if( !structIsEmpty( envStruct ) ) {
+            consoleLogger.info( "commandbox-dotenv: Loading Java properties from #directory##envFileName#" );
+        }
         for (var key in envStruct) {
             javaSystem.setProperty( key, envStruct[ key ] );
-        }
-        if( !structIsEmpty( envStruct ) ) {
-            consoleLogger.info( "Java properties loaded from #directory##envFileName#" );
+            if( printOnLoad ) {
+                consoleLogger.info( "commandbox-dotenv: #key#=#envStruct[ key ]#" );
+            }
         }
     }
 
