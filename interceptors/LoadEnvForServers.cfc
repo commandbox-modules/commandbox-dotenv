@@ -1,30 +1,19 @@
 component {
 
     property name="envFileName" inject="commandbox:moduleSettings:commandbox-dotenv:fileName";
-    property name="propertyFile" inject="provider:PropertyFile@propertyFile";
+    property name="envFileService" inject="EnvironmentFileService@commandbox-dotenv";
+    property name='consoleLogger' inject='logbox:logger:console';
 
     function onServerStart(interceptData) {
         var webRoot = interceptData.serverInfo.webRoot;
-        var envStruct = getEnvStruct( "#webRoot#/#envFileName#" );
+        var envStruct = envFileService.getEnvStruct( "#webRoot#/#envFileName#" );
+        if( !structIsEmpty( envStruct ) ) {
+            consoleLogger.info( "commandbox-dotenv: Setting server JVM arguments from #webRoot##envFileName#" );
+        }
         for (var key in envStruct) {
             // Append to the JVM args
             interceptData.serverInfo.jvmArgs &= ' "-D#key#=#envStruct[key]#"';
         }
-    }
-
-    private function getEnvStruct( envFilePath ) {
-        if ( ! fileExists( envFilePath ) ) {
-            return {};
-        }
-
-        var envFile = fileRead( envFilePath );
-        if ( isJSON( envFile ) ) {
-            return deserializeJSON( envFile );
-        }
-
-        return propertyFile.get()
-            .load( envFilePath )
-            .getAsStruct();
     }
 
 }

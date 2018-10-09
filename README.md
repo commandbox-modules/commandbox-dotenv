@@ -36,6 +36,14 @@ all your file names will need to be `env.properties`.
 
 There is currently no way to provide a per-project override.
 
+#### Logging Properties
+
+Properties and values can be logged to the console for debugging by setting the `printOnLoad` setting to `true`.
+
+```
+config set modules.commandbox-dotenv.printOnLoad=true
+```
+
 ## Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
