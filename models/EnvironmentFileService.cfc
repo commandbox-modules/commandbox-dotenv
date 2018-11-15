@@ -29,9 +29,9 @@ component singleton="true" {
         	
         	// Shim for older versions of CommandBox
         	if( !structKeyExists( systemSettings, 'setSystemSetting' ) ) {
-            	javaSystem.setProperty( key, envStruct[ key ] );
+				javaSystem.setProperty( key, envStruct[ key ] );
         	} else {
- 				systemSettings.setSystemSetting( key, envStruct[ key ] );       		        		
+				systemSettings.setSystemSetting( key, envStruct[ key ] );       		        		
         	}
             
             if( printOnLoad ) {
