@@ -16,9 +16,7 @@ This package loads up local files as Java Properties for both CommandBox command
 
 #### CommandBox Commands
 
-When loading up the CLI, this package will look for a `.env` file in the directory where CommandBox is being loaded or executed.  If found it will take the key / value pairs found in the file and store them as Java properties.  These values are now available in any CommandBox command either using the `java.lang.System` object and the `getProperties()` or `getProperty(name, defaultValue)` methods (Note: the keys are case-sensitive), or by using CommandBox's [built-in system variable expansion.](https://commandbox.ortusbooks.com/content/usage/execution/system-settings.html)
-
-Since the CommandBox properties are loaded on CLI start, you will need to `reload` CommandBox before seeing any changes to the `.env` file.  This can be accomplished just by running `reload` from the interactive shell.  If you are running one-off commands, this happens on each command for you already.
+When loading up the CLI, this package will look for a `.env` file in the directory where CommandBox is being loaded or executed.  If found it will take the key / value pairs found in the file and store them as CommandBox environment variables.  These values are now available in any CommandBox command either using `systemSettings.getSystemSetting( name, defaultValue )`, or by using CommandBox's [built-in system variable expansion.](https://commandbox.ortusbooks.com/usage/system-settings#using-system-settings-from-the-cli)
 
 #### CommandBox Servers
 
