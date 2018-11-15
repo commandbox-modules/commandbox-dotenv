@@ -14,9 +14,17 @@ This package loads up local files as Java Properties for both CommandBox command
 
 > Another good tip is to create an `.env.example` file that **is source controlled** that contains all the keys required in your `.env` file but none of the values.
 
-#### CommandBox Commands
+#### CommandBox Startup
 
-When loading up the CLI, this package will look for a `.env` file in the directory where CommandBox is being loaded or executed.  If found it will take the key / value pairs found in the file and store them as CommandBox environment variables.  These values are now available in any CommandBox command either using `systemSettings.getSystemSetting( name, defaultValue )`, or by using CommandBox's [built-in system variable expansion.](https://commandbox.ortusbooks.com/usage/system-settings#using-system-settings-from-the-cli)
+When loading up the CLI, this package will look for a `.env` file in the directory where CommandBox is being loaded or executed.  If found it will take the key / value pairs found in the file and store them as CommandBox environment variables.  These values are now available in any CommandBox command either using `systemSettings.getSystemSetting( name, defaultValue )`, or by using CommandBox's [built-in system variable expansion.](https://commandbox.ortusbooks.com/usage/system-settings#using-system-settings-from-the-cli):
+
+```bash
+echo ${myvar}
+```
+
+#### CommandBox Commands
+Any time you run a command, if there is a `.env` file in the current working directory where the command was run, those vars will be loaded into the environment context of that command only.   This is great for localized variables that only apply to a specific project. Note, this feature only kicks in if you are on CommandBox 4.5 or higher.  
+
 
 #### CommandBox Servers
 
