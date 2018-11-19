@@ -44,11 +44,21 @@ There is currently no way to provide a per-project override.
 
 #### Logging Properties
 
-Properties and values can be logged to the console for debugging by setting the `printOnLoad` setting to `true`.
+There are two levels of logging available.  You can log to the console every time an `.env` file has been loaded by setting the `printOnLoad` setting to `true`.
 
 ```
 config set modules.commandbox-dotenv.printOnLoad=true
 ```
+
+You can get further output that shows you the name and value of every variable that was loaded by setting the `verbse` setting to `true` as well.
+
+
+```
+config set modules.commandbox-dotenv.verbose=true
+```
+
+The `verbse` setting will only kick in if `printOnLoad` is also true.
+
 
 ## Contributors
 
