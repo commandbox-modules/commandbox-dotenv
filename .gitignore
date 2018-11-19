@@ -1,1 +1,4 @@
 modules
+*.project
+settings.xml
+.settings

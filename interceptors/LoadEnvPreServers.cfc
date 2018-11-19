@@ -11,7 +11,7 @@ component {
         }
         
         // Load env vars into CLI
-        envFileService.loadEnvToCLI( envStruct, moduleSettings.printOnLoad );
+        envFileService.loadEnvToCLI( envStruct );
     }
 
 }
