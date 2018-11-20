@@ -4,6 +4,10 @@
 component singleton="true" {
 
     property name="propertyFile" inject="provider:PropertyFile@propertyFile";
+    property name='consoleLogger' inject='logbox:logger:console';
+    property name='systemSettings' inject='systemSettings';
+    property name="javaSystem" inject="java:java.lang.System";
+    property name="moduleSettings" inject="commandbox:moduleSettings:commandbox-dotenv";
 
     public function getEnvStruct( envFilePath ) {
         if ( ! fileExists( envFilePath ) ) {
@@ -18,6 +22,25 @@ component singleton="true" {
         return propertyFile.get()
             .load( envFilePath )
             .getAsStruct();
+    }
+    
+    public function loadEnvToCLI( required struct envStruct ) {
+    	
+        for (var key in envStruct) {
+        	
+        	// Shim for older versions of CommandBox
+        	if( !structKeyExists( systemSettings, 'setSystemSetting' ) ) {
+				javaSystem.setProperty( key, envStruct[ key ] );
+        	} else {
+				systemSettings.setSystemSetting( key, envStruct[ key ] );       		        		
+        	}
+            
+            if( moduleSettings.printOnLoad && moduleSettings.verbose ) {
+                consoleLogger.info( "commandbox-dotenv: #key#=#envStruct[ key ]#" );
+            }
+            
+        }
+        
     }
 
 }
