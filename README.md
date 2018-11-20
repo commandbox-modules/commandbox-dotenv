@@ -1,7 +1,5 @@
 # commandbox-dotenv
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
-
 ## Load a local file into Java Properties for CommandBox commands and servers
 
 Storing secrets in source-controlled files is a bad idea, but we still need some way to provide these sensitive credentials or configuration values to our projects.  This problem is exacerbated in development environments where we are running multiple servers at once.  This package let's us solve this problem for servers started with CommandBox.
@@ -23,7 +21,7 @@ echo ${myvar}
 ```
 
 #### CommandBox Commands
-Any time you run a command, if there is a `.env` file in the current working directory where the command was run, those vars will be loaded into the environment context of that command only.   This is great for localized variables that only apply to a specific project. Note, this feature only kicks in if you are on CommandBox 4.5 or higher.  
+Any time you run a command, if there is a `.env` file in the current working directory where the command was run, those vars will be loaded into the environment context of that command only.   This is great for localized variables that only apply to a specific project. Note, this feature only kicks in if you are on CommandBox 4.5 or higher.
 
 
 #### CommandBox Servers
@@ -58,15 +56,3 @@ config set modules.commandbox-dotenv.verbose=true
 ```
 
 The `verbse` setting will only kick in if `printOnLoad` is also true.
-
-
-## Contributors
-
-Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-| [<img src="https://avatars1.githubusercontent.com/u/2583646?v=4" width="100px;"/><br /><sub>Eric Peterson</sub>](https://github.com/elpete)<br />[💻](https://github.com/elpete/commandbox-dotenv/commits?author=elpete "Code") [📖](https://github.com/elpete/commandbox-dotenv/commits?author=elpete "Documentation") | [<img src="https://avatars0.githubusercontent.com/u/584009?v=4" width="100px;"/><br /><sub>Brad Wood</sub>](http://www.codersrevolution.com)<br />[🔌](#plugin-bdw429s "Plugin/utility libraries") |
-| :---: | :---: |
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
