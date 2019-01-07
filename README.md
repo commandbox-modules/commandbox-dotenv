@@ -48,11 +48,11 @@ There are two levels of logging available.  You can log to the console every tim
 config set modules.commandbox-dotenv.printOnLoad=true
 ```
 
-You can get further output that shows you the name and value of every variable that was loaded by setting the `verbse` setting to `true` as well.
+You can get further output that shows you the name and value of every variable that was loaded by setting the `verbose` setting to `true` as well.
 
 
 ```
 config set modules.commandbox-dotenv.verbose=true
 ```
 
-The `verbse` setting will only kick in if `printOnLoad` is also true.
+The `verbose` setting will only kick in if `printOnLoad` is also true.
