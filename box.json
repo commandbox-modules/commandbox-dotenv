@@ -1,6 +1,6 @@
 {
     "name":"CommandBox dotenv",
-    "version":"1.6.0",
+    "version":"1.7.0",
     "author":"Eric Peterson",
     "homepage":"https://github.com/elpete/commandbox-dotenv",
     "documentation":"https://github.com/elpete/commandbox-dotenv",
@@ -35,5 +35,5 @@
     "installPaths":{
         "propertyFile":"modules/propertyFile"
     },
-    "location":"elpete/commandbox-dotenv#v1.6.0"
+    "location":"elpete/commandbox-dotenv#v1.7.0"
 }
