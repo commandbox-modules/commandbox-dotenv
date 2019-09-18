@@ -23,10 +23,24 @@ echo ${myvar}
 #### CommandBox Commands
 Any time you run a command, if there is a `.env` file in the current working directory where the command was run, those vars will be loaded into the environment context of that command only.   This is great for localized variables that only apply to a specific project. Note, this feature only kicks in if you are on CommandBox 4.5 or higher.
 
-
 #### CommandBox Servers
 
-When starting up a server, this package will look for a `.env` file in the webroot of the server starting.  If found it will take the key / value pairs found in the file and store them as Java properties.  These values are now available in your web application using the `java.lang.System` object and the `getProperties()` or `getProperty(name, defaultValue)` methods (Note: the keys are case-sensitive).
+When starting up a server, this package will look for a `.env` file in the webroot of the server starting.  If found, it will take the key / value pairs found in the file and store them as Java properties.  These values are now available in your web application using the `java.lang.System` object and the `getProperties()` or `getProperty(name, defaultValue)` methods (Note: the keys are case-sensitive).
+
+#### Global Env File
+
+When starting up the CLI, CommandBox will look for a `~/.box.env` file.
+It will load the file's key / value pairs as environment variables inside CommandBox.
+
+If you change the contents of this file, you will need to reload your shell for
+the changes to take effect.
+
+If you want to change the name of the global environment file, you can update
+your module settings:
+
+```bash
+config set modules.commandbox-dotenv.globalEnvFile = "~/.commandbox.env"
+```
 
 #### Different Property File Name
 
