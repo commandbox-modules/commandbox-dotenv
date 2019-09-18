@@ -7,7 +7,7 @@ component {
         var webRoot = interceptData.serverDetails.serverInfo.webRoot;
         var envStruct = envFileService.getEnvStruct( "#webRoot#/#moduleSettings.fileName#" );
         if( !structIsEmpty( envStruct ) && moduleSettings.printOnLoad ) {
-            consoleLogger.info( "commandbox-dotenv: Loading Java properties from #webRoot##moduleSettings.fileName#" );
+            consoleLogger.info( "commandbox-dotenv: Loading environment variables from #webRoot##moduleSettings.fileName#" );
         }
         
         // Load env vars into CLI
