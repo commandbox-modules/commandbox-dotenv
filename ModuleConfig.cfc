@@ -2,10 +2,10 @@ component {
 
 	function configure() {
 		settings = {
-			'fileName' = '.env',
-			'globalEnvFile' = '~/.box.env',
-			'printOnLoad' = false,
-			'verbose' = false
+			"fileName" = ".env",
+			"globalEnvFile" = "~/.box.env",
+			"printOnLoad" = false,
+			"verbose" = false
 		};
 
 		interceptors = [
