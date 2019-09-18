@@ -8,7 +8,7 @@ component {
         var directory = fileSystemUtil.resolvePath( "" );
         var envStruct = envFileService.getEnvStruct( "#directory#/#moduleSettings.fileName#" );
         if( !structIsEmpty( envStruct ) && moduleSettings.printOnLoad ) {
-            consoleLogger.info( "commandbox-dotenv: Loading Java properties from #directory##moduleSettings.fileName#" );
+            consoleLogger.info( "commandbox-dotenv: Loading environment variables from #directory##moduleSettings.fileName#" );
         }
         
         // Load env vars into CLI
@@ -19,7 +19,7 @@ component {
         var directory = fileSystemUtil.resolvePath( "" );
         var envStruct = envFileService.getEnvStruct( "#directory#/#moduleSettings.fileName#" );
         if( !structIsEmpty( envStruct ) && moduleSettings.printOnLoad ) {
-            consoleLogger.info( "commandbox-dotenv: Loading Java properties from #directory##moduleSettings.fileName#" );
+            consoleLogger.info( "commandbox-dotenv: Loading environment variables from #directory##moduleSettings.fileName#" );
         }
         
         // Load env vars into CLI
