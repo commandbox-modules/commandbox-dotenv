@@ -2,7 +2,8 @@ component {
 
 	function configure() {
 		settings = {
-			"fileName" = ".env",
+            "fileName" = ".env",
+            "exampleFileName" = ".env.example",
 			"globalEnvFile" = "~/.box.env",
 			"printOnLoad" = false,
 			"verbose" = false
