@@ -11,7 +11,7 @@ component {
         }
         for (var key in envStruct) {
             // Append to the JVM args
-            interceptData.serverInfo.jvmArgs &= ' "-D#key#=#envStruct[key]#"';
+            interceptData.serverInfo.jvmArgs &= ' "-D#key#=#toString( envStruct[key] ).replaceNoCase( '\', '\\', 'all' ).replaceNoCase( '"', '\"', 'all' )#"';
         }
     }
 
