@@ -142,3 +142,41 @@ in your `.env.example` file. It will also check for any new keys in your
 
 Another great place to add this command is in your CI pipeline to avoid deploying
 a build with a missing environment variable.
+
+#### preServerStart Check
+
+Enabled by default is a `preServerStart` check.  This will run `dotenv check` for you and
+throw an error if the `.env` file does not have all of the `.env.example` keys.  This
+is to help prevent you spending precious time debugging your application just to find
+you are missing an env key.
+
+If you do not want this behavior, you can set the `checkEnvPreServerStart` module setting to false.
+
+```sh
+box config set modules.commandbox-dotenv.checkEnvPreServerStart=false
+```
+
+#### Env File Commands
+
+Thanks to Dan Card and his `commandbox-envfile` library, you can interact with your env file right from CommandBox.
+There are four commands to help you out.
+
+##### dotenv show
+
+This shows the current .env file contents.  You can pass an override envFileName or folder, if desired.
+
+##### dotenv get
+
+This gets the value of a key in the current .env file.  You can pass an override envFileName or folder, if desired.
+Don't forget tab completion here to help you fill out the key names quickly!
+
+##### dotenv set
+
+This takes two arguments, a name and a value, and sets it in your current .env file.  Current property names
+can be tab completed.  You can pass an override envFileName or folder, if desired.
+
+##### dotenv populate
+
+This command will inspect your .env.example file and help you fill out the values in your .env file.
+Additionally, it can only prompt you for new values using the `--new` flag.  The exampleFileName, envFileName, and
+folder can all be customized, if desired.
