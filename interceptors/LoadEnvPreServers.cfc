@@ -18,7 +18,7 @@ component {
             var missingKeys = envFileService.diff( envExampleStruct, envStruct );
             if ( !missingKeys.isEmpty() ) {
                 throw(
-                    type = "InvalidEnvCheck",
+                    type = "commandException",
                     message = "The [#moduleSettings.fileName#] file is missing keys from the #moduleSettings.exampleFileName#. You can populate your #moduleSettings.fileName# with the new settings using `dotenv populate --new`",
                     detail = "Missing keys: [ #missingKeys.toList( ", " )# ]"
                 )
