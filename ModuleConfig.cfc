@@ -6,7 +6,8 @@ component {
             "exampleFileName" = ".env.example",
 			"globalEnvFile" = "~/.box.env",
 			"printOnLoad" = false,
-			"verbose" = false
+			"verbose" = false,
+			"checkEnvPreServerStart": true
 		};
 
 		interceptors = [

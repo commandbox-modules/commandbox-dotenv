@@ -23,12 +23,7 @@ component {
         var structOfTruth = arguments.reverse ? envStruct : envExampleStruct;
         var structToCheck = arguments.reverse ? envExampleStruct : envStruct;
 
-        var missingKeys = structOfTruth.reduce( ( acc, key ) => {
-            if ( ! structToCheck.keyExists( arguments.key ) ) {
-                arguments.acc.append( arguments.key );
-            }
-            return arguments.acc;
-        }, [] );
+        var missingKeys = envFileService.diff( structOfTruth, structToCheck );
 
         if ( missingKeys.isEmpty() ) {
             print.greenLine( "Check successful." );
