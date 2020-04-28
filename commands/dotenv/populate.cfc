@@ -12,11 +12,13 @@ component {
      * @exampleFileName.hint The path to the example .envfile
      * @envFileName.hint     The path and name of the .env file
      * @folder.hint          The folder in which the .env file to use is located. Defaults to the current directory.
+	 * @new.hint             Only add the new variables from the example file
      */
     function run(
 		string exampleFileName = ".env.example",
 		string envFileName = ".env",
-		string folder = ""
+		string folder = "",
+		boolean new = false
 	) {
 		var directory = variables.fileSystemUtil.resolvePath( arguments.folder );
 		var exampleFile = directory & arguments.exampleFileName;
@@ -27,7 +29,7 @@ component {
 
 		var envFile = directory & arguments.envFileName;
 		var shouldContinue = fileExists( envFile ) ?
-			confirm( "The file [#envFile#] already exists.  Do you want to overwrite it? [y/n]" ) :
+			( arguments.new || confirm( "The file [#envFile#] already exists.  Do you want to overwrite it? [y/n]" ) ) :
 			createEnv( envFile );
 
 		if ( !shouldContinue ) {
@@ -36,18 +38,27 @@ component {
 		}
 
 		var targetPropertyFile = propertyFile.load( envFile );
-        propertyFile.load( exampleFile )
+		var examplePropertyFile = propertyFile.load( exampleFile );
+
+		var properties = examplePropertyFile
 			.getAsStruct()
-			.each( ( key, defaultValue ) => {
-				var newValue = ask(
-					message = "#key#=",
-					defaultResponse = defaultValue
-				);
-				targetPropertyFile.set( key, newValue );
-			} ) ;
+			.filter( ( key ) => !new || !targetPropertyFile.exists( key ) );
+
+		if ( properties.isEmpty() ) {
+			print.line( "No#arguments.new ? ' new' : ''# properties to add." );
+			return;
+		}
+
+		properties.each( ( key, defaultValue = "" ) => {
+			var newValue = ask(
+				message = "#key#=",
+				defaultResponse = defaultValue
+			);
+			targetPropertyFile.set( key, newValue );
+		} );
 
 		targetPropertyFile.store();
-		print.line().whiteOnGreenLine( "All values stored." );
+		print.line().greenLine( "#arguments.new ? 'New' : 'All'# values stored." );
 	}
 
 	/**
