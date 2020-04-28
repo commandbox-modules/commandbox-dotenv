@@ -18,7 +18,6 @@
         "env"
     ],
     "scripts":{
-        "postVersion":"package set location='elpete/commandbox-dotenv#v`package version`'",
         "onRelease":"publish",
         "postPublish":"!git push && git push --tags"
     },
@@ -35,5 +34,5 @@
     "installPaths":{
         "propertyFile":"modules/propertyFile"
     },
-    "location":"elpete/commandbox-dotenv#v2.0.0"
+    "location":"forgeboxStorage"
 }
