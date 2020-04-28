@@ -2,16 +2,17 @@
     "name":"CommandBox dotenv",
     "version":"2.0.1",
     "author":"Eric Peterson",
-    "homepage":"https://github.com/elpete/commandbox-dotenv",
-    "documentation":"https://github.com/elpete/commandbox-dotenv",
+    "location":"forgeboxStorage",
+    "homepage":"https://github.com/commandbox-modules/commandbox-dotenv",
+    "documentation":"https://github.com/commandbox-modules/commandbox-dotenv",
     "repository":{
         "type":"git",
-        "URL":"https://github.com/elpete/commandbox-dotenv"
+        "URL":"https://github.com/commandbox-modules/commandbox-dotenv"
     },
-    "bugs":"https://github.com/elpete/commandbox-dotenv/issues",
+    "bugs":"https://github.com/commandbox-modules/commandbox-dotenv/issues",
     "slug":"commandbox-dotenv",
     "shortDescription":"Convention approach to adding environment variables to JVM args for CommandBox.",
-    "instructions":"https://github.com/elpete/commandbox-dotenv",
+    "instructions":"https://github.com/commandbox-modules/commandbox-dotenv",
     "type":"commandbox-modules",
     "keywords":[
         "server",
@@ -25,7 +26,7 @@
     "license":[
         {
             "type":"MIT",
-            "URL":"https://github.com/elpete/commandbox-dotenv/blob/master/LICENSE"
+            "URL":"https://github.com/commandbox-modules/commandbox-dotenv/blob/master/LICENSE"
         }
     ],
     "dependencies":{
@@ -33,6 +34,5 @@
     },
     "installPaths":{
         "propertyFile":"modules/propertyFile"
-    },
-    "location":"forgeboxStorage"
+    }
 }

@@ -1,4 +1,4 @@
-modules
+/modules/
 *.project
 settings.xml
 .settings
