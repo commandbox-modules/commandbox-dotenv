@@ -24,7 +24,11 @@ component singleton="true" {
             .getAsStruct();
     }
 
-    public function loadEnvToCLI( required struct envStruct ) {
+	/**
+	* @envStruct Struct of key/value pairs to load
+	* @inParent Loads vars into the parent context so they persist outside of this current command
+	*/
+    public function loadEnvToCLI( required struct envStruct, boolean inParent=false ) {
 
         for (var key in envStruct) {
 
@@ -32,7 +36,7 @@ component singleton="true" {
         	if( !structKeyExists( systemSettings, 'setSystemSetting' ) ) {
 				javaSystem.setProperty( key, envStruct[ key ] );
         	} else {
-				systemSettings.setSystemSetting( key, envStruct[ key ] );
+				systemSettings.setSystemSetting( key, envStruct[ key ], inParent );
         	}
 
             if( moduleSettings.printOnLoad && moduleSettings.verbose ) {
