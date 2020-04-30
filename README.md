@@ -180,3 +180,7 @@ can be tab completed.  You can pass an override envFileName or folder, if desire
 This command will inspect your .env.example file and help you fill out the values in your .env file.
 Additionally, it can only prompt you for new values using the `--new` flag.  The exampleFileName, envFileName, and
 folder can all be customized, if desired.
+
+##### dotenv load
+
+This command will load arbitrary properties files into your CommandBox environment.  Useful for task runners where you need to load a shared environment file.
