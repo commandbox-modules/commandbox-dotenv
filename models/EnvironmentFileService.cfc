@@ -19,7 +19,15 @@ component singleton="true" {
             return deserializeJSON( envFile );
         }
 
-        return propertyFile.get()
+		// Shim for old version of WireBox/CommandBox
+		if( structKeyExists( propertyFile, '$get' ) ) {
+			// WireBox >= 6
+			var propFile = propertyFile.$get();
+		} else {
+			// WireBox <= 5.x
+			var propFile = propertyFile.get();			
+		}
+        return propFile
             .load( envFilePath )
             .getAsStruct();
     }
