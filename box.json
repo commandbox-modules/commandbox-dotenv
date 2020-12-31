@@ -1,6 +1,6 @@
 {
     "name":"CommandBox dotenv",
-    "version":"2.1.0",
+    "version":"2.1.1",
     "author":"Eric Peterson",
     "location":"forgeboxStorage",
     "homepage":"https://github.com/commandbox-modules/commandbox-dotenv",
