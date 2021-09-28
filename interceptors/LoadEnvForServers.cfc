@@ -3,7 +3,7 @@ component {
     property name="envFileService" inject="EnvironmentFileService@commandbox-dotenv";
     property name='consoleLogger' inject='logbox:logger:console';
 
-    function onServerStart(interceptData) {
+    function onServerStart( interceptData ) {
         var webRoot = interceptData.serverInfo.webRoot;
         var envStruct = envFileService.getEnvStruct( "#webRoot#/#moduleSettings.fileName#" );
         if( !structIsEmpty( envStruct ) && moduleSettings.printOnLoad ) {

@@ -46,6 +46,18 @@ file and store them as Java properties. These values are now available in your w
 application using the `java.lang.System` object and the `getProperties()` or
 `getProperty(name, defaultValue)` methods (Note: the keys are case-sensitive).
 
+To point to a custom properties file to be loaded in addition to the convention `.env` file above, 
+you can set a `dotenvFile` key in your `server.json` or config setting `server.defaults`.
+
+```bash
+server set dotenvFile=foo.properties
+```
+You can also set a comma-delimited list of paths using file globbing patterns.
+```bash
+# Load all properties files in the web root as well as foo.properties in the config folder.
+server set dotenvFile=*.properties,config/foo.properties
+```
+
 #### Global Env File
 
 When starting up the CLI, CommandBox will look for a `~/.box.env` file.

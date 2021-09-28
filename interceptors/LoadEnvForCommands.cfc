@@ -19,7 +19,7 @@ component {
         var directory = fileSystemUtil.resolvePath( "" );
         var envStruct = envFileService.getEnvStruct( "#directory#/#moduleSettings.fileName#" );
         if( !structIsEmpty( envStruct ) && moduleSettings.printOnLoad ) {
-            consoleLogger.info( "commandbox-dotenv: Loading environment variables from #directory##moduleSettings.fileName#" );
+            consoleLogger.info( "commandbox-dotenv: Loading environment variables from [#directory##moduleSettings.fileName#] for command [#interceptData.commandInfo.commandString.listChangeDelims( ' ', '.' )#]" );
         }
         
         // Load env vars into CLI
