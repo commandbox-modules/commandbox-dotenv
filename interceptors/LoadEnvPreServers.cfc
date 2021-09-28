@@ -4,6 +4,7 @@ component {
     property name="consoleLogger"	inject="logbox:logger:console";
     property name="fileSystemUtil"	inject="FileSystem";
     property name='configService'	inject='configService';
+    property name='wirebox'			inject='wirebox';
 
     function preServerStart(interceptData) {
         var webRoot = interceptData.serverDetails.serverInfo.webRoot;
@@ -38,27 +39,34 @@ component {
         
         var serverEnvFile = '';
         // First look for a server.defaults config setting
-        if( defaults.keyExists( 'dotenvFile' ) ) {
-        	serverEnvFile = FileSystemUtil.resolvePath( defaults.dotenvFile, webRoot );
+        if( defaults.keyExists( 'dotenvFile' ) && len( defaults.dotenvFile ) ) {
+        	serverEnvFile = defaults.dotenvFile.listMap( (f)=>FileSystemUtil.resolvePath( f, webRoot ) );
         }
         // Then look for a key in the actual server.json
-        if( serverJSON.keyExists( 'dotenvFile' ) ) {
-        	serverEnvFile = FileSystemUtil.resolvePath( serverJSON.dotenvFile, getDirectoryFromPath( serverInfo.serverConfigFile ) );
+        if( serverJSON.keyExists( 'dotenvFile' ) && len( serverJSON.dotenvFile ) ) {
+        	serverEnvFile = serverEnvFile.listAppend(
+        		serverJSON.dotenvFile.listMap( (f)=>FileSystemUtil.resolvePath( f, getDirectoryFromPath( serverInfo.serverConfigFile ) ) )
+        	);
         }
-        serverEnvFile = fileSystemUtil.normalizeSlashes( serverEnvFile );
-        
-        // If there isn't a envFile for this server OR it's the same as the one we loaded above, ignore it.
-        if( !len( serverEnvFile ) || serverEnvFile == webRootEnvFile ) {
+        // If there isn't a envFile for this server, ignore it.
+        if( !len( serverEnvFile ) ) {
         	return;
         }
         
-        if( fileExists( serverEnvFile ) && moduleSettings.printOnLoad ) {
-            consoleLogger.info( "commandbox-dotenv: loading server dotenvFile from [#serverEnvFile#]" );
-        }
-        
-		envFileService.loadEnvToCLI( envStruct=envFileService.getEnvStruct( serverEnvFile ) );
-        
-        
+        wirebox.getInstance( 'Globber' )
+        	.setPattern( serverEnvFile )
+        	.apply( (f)=>{
+                f = fileSystemUtil.normalizeSlashes( f );
+                // If it's the same as the one we loaded above, ignore it
+                if( f == webRootEnvFile ) {
+                	return;
+                }
+		        if( moduleSettings.printOnLoad ) {
+		            consoleLogger.info( "commandbox-dotenv: loading server dotenvFile from [#f#]" );
+		        }
+		        envFileService.loadEnvToCLI( envStruct=envFileService.getEnvStruct( serverEnvFile ) );
+        	} );
+
     }
 
 }
