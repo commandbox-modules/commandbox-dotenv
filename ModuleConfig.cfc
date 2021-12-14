@@ -7,7 +7,8 @@ component {
 			"globalEnvFile" = "~/.box.env",
 			"printOnLoad" = false,
 			"verbose" = false,
-			"checkEnvPreServerStart" = true
+			"checkEnvPreServerStart" = true,
+			"legacyLoadToServerJVMArgs" = true
 		};
 
 		interceptors = [
