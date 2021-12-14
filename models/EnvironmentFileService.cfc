@@ -8,6 +8,8 @@ component singleton="true" {
     property name='systemSettings' inject='systemSettings';
     property name="javaSystem" inject="java:java.lang.System";
     property name="moduleSettings" inject="commandbox:moduleSettings:commandbox-dotenv";
+    
+    this.NOT_EXISTS='______NOT_EXISTS______';
 
     public function getEnvStruct( envFilePath ) {
         if ( ! fileExists( envFilePath ) ) {
@@ -57,7 +59,8 @@ component singleton="true" {
 
     public array function diff( required struct source, required struct target ) {
         return arguments.source.reduce( ( acc, key ) => {
-            if ( ! target.keyExists( arguments.key ) ) {
+        	// If the key isn't in the target file AND isn't defined in the current environment already
+            if ( ! target.keyExists( arguments.key ) && systemSettings.getSystemSetting( arguments.key, this.NOT_EXISTS ) == this.NOT_EXISTS ) {
                 arguments.acc.append( arguments.key );
             }
             return arguments.acc;
