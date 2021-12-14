@@ -4,6 +4,11 @@ component {
     property name='consoleLogger' inject='logbox:logger:console';
 
     function onServerStart( interceptData ) {
+    	
+    	if( !moduleSettings.legacyLoadToServerJVMArgs ) {
+    		return;
+    	}
+    	
         var webRoot = interceptData.serverInfo.webRoot;
         var envStruct = envFileService.getEnvStruct( "#webRoot#/#moduleSettings.fileName#" );
         if( !structIsEmpty( envStruct ) && moduleSettings.printOnLoad ) {
