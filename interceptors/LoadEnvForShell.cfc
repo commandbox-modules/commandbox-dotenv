@@ -10,7 +10,11 @@ component {
         
         // Stub out this file for them just so it's easier to find and use.
         if ( ! fileExists( gloablEnv ) ) {
-        	fileWrite( gloablEnv, "## Add environment variables to be loaded into CommandBox when it starts#chr( 13 )##chr( 10 )### Variables are in the form of foo=bar, one per line" );
+            try {
+        	    fileWrite( gloablEnv, "## Add environment variables to be loaded into CommandBox when it starts#chr( 13 )##chr( 10 )### Variables are in the form of foo=bar, one per line" );
+            } catch( any e ) {
+                // No permissions
+            }
         }
         
         var envStruct = envFileService.getEnvStruct( gloablEnv );
