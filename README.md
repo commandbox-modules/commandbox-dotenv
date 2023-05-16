@@ -46,7 +46,7 @@ file and store them as Java properties. These values are now available in your w
 application using the `java.lang.System` object and the `getProperties()` or
 `getProperty(name, defaultValue)` methods (Note: the keys are case-sensitive).
 
-To point to a custom properties file to be loaded in addition to the convention `.env` file above, 
+To point to a custom properties file to be loaded in addition to the convention `.env` file above,
 you can set a `dotenvFile` key in your `server.json` or config setting `server.defaults`.
 
 ```bash
@@ -57,6 +57,12 @@ You can also set a comma-delimited list of paths using file globbing patterns.
 # Load all properties files in the web root as well as foo.properties in the config folder.
 server set dotenvFile=*.properties,config/foo.properties
 ```
+
+When using CommandBox in multi-site mode (6.0.0+) any time a .site.json file is read for a specific
+site, any existing `.env` will be read from the web root of that site and used for expanding any system setting
+placeholders in that site JSON file.  CommandBox will use a nested environment for loading this .env file so any env var
+names declared here will not conflict with env vars in the global sheel or loaded at the top server level or or any other sites.
+None of the site-specific env vars will be passed to the running server process.  They are only used inside the .site.json.
 
 #### Global Env File
 
