@@ -4,6 +4,7 @@ component {
     property name="envFileService" inject="EnvironmentFileService@commandbox-dotenv";
     property name="fileSystemUtil" inject="FileSystem";
     property name="consoleLogger"  inject="logbox:logger:console";
+	property name="configService"  inject="configService";
 
     function onCLIStart( interceptData ) {
         var gloablEnv = fileSystemUtil.resolvePath( moduleSettings.globalEnvFile );
@@ -18,11 +19,20 @@ component {
         }
         
         var envStruct = envFileService.getEnvStruct( gloablEnv );
-        if ( ! structIsEmpty( envStruct ) && moduleSettings.printOnLoad ) {
-            consoleLogger.info( "commandbox-dotenv: Loading environment variables from #gloablEnv#" );
+        if ( ! structIsEmpty( envStruct ) ) {
+
+            if( moduleSettings.printOnLoad ) {
+                consoleLogger.info( "commandbox-dotenv: Loading environment variables from #gloablEnv#" );
+            }
+
+            envFileService.loadEnvToCLI( envStruct );
+            
+            if( !isNull( configService ) ) {
+                // Reload config to pickup any changes
+                configService.loadOverrides();
+            }
         }
         
-        envFileService.loadEnvToCLI( envStruct );
     }
 
 }
